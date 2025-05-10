@@ -12,67 +12,64 @@ Create a Python script that:
 
 ## ✅ Functional Requirements
 
-- Use a parallelized MapReduce-like approach with:
+- Use a parallel MapReduce-like pipeline with:
   - `map_function(word) -> (word, 1)`
   - `shuffle_function(mapped_data)`
   - `reduce_function((word, [1,1,...])) -> (word, count)`
-- Optional: filter only specific search words
 - Download text using `requests`
 - Clean punctuation using `string.punctuation`
 - Visualize results using `matplotlib.pyplot`
+- Supports optional filtering by specific search words
+- ThreadPoolExecutor used for parallel map/reduce stages
 
 ---
 
-## 🧪 Example
+## 🧪 Example Usage
 
 ### 🔗 Example URL:
 
-[https://gutenberg.org/files/1342/1342-0.txt](https://gutenberg.org/files/1342/1342-0.txt)
+`https://www.gutenberg.org/files/1342/1342-0.txt` (Pride and Prejudice)
 
-### 🔍 Search words:
+### 🔍 Search words (optional):
 
 ```python
 search_words = ['love', 'war', 'peace']
 ```
 
-### ✅ Expected Output:
-
-Terminal:
+### ✅ Example Output:
 
 ```
-Результат підрахунку слів: {'war': 203, 'peace': 132, 'love': 245}
+Результат підрахунку слів: {'the': 4622, 'of': 3825, 'and': 3123, 'to': 2761, 'a': 2164, 'in': 1904, 'was': 1846, 'that': 1644, 'it': 1571, 'her': 1564}
 ```
 
-Bar chart:
-
-- Horizontal bars
-- X-axis: frequency
-- Y-axis: top words
+And a horizontal bar chart showing the **top 10 most frequent words**.
 
 ---
 
-## 📈 Visualization
+## 📈 Visualization Details
 
-Use `matplotlib` to create a bar chart with:
+- Horizontal bar chart
+- X-axis: frequency
+- Y-axis: word
+- Chart built using:
 
-- `plt.barh(words[::-1], counts[::-1])`
-- Title: "Top N Most Frequent Words"
-- X label: "Frequency"
-- Y label: "Words"
+```python
+plt.barh(words[::-1], counts[::-1])
+```
 
 ---
 
 ## 🧩 Optional Enhancements
 
-- Use `ThreadPoolExecutor` for parallel mapping/reducing
-- Add CLI arguments for:
-  - custom URL
-  - number of top words
-  - specific search terms
+- Accept URL or `top_n` as CLI arguments
+- Limit to search-specific words
+- Export results to a file (CSV or JSON)
 
 ---
 
-## 🛠️ Requirements
+## 🛠️ Installation
+
+Install required libraries:
 
 ```bash
 pip install matplotlib requests
@@ -80,10 +77,10 @@ pip install matplotlib requests
 
 ---
 
-## 📂 Output Example
+## 📂 Output Example (Terminal + Chart)
 
 ```
-Результат підрахунку слів: {'love': 245, 'war': 203, 'peace': 132}
+Результат підрахунку слів: {'the': 4622, 'of': 3825, 'and': 3123, 'to': 2761, 'a': 2164, 'in': 1904, 'was': 1846, 'that': 1644, 'it': 1571, 'her': 1564}
 ```
 
-And a bar chart displaying the top 10 most frequent words.
+📊 Bar chart appears with most frequent words in descending order.

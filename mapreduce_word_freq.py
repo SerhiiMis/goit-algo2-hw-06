@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
     text = get_text(url)
     if text:
-        result = map_reduce(text)  # Or use: map_reduce(text, search_words=['love', 'man', 'time'])
+        result = map_reduce(text)
         print("Результат підрахунку слів:", dict(list(result.items())[:10]))
         visualize_top_words(result, top_n=10)
     else:
